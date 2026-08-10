@@ -1,0 +1,16 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node / Build / Vercel
+node_modules/
+.vercel/
+*.log
+
+# Large Design Source Files (AI / RAW PDFs)
+*.ai
+assets/Identidade Visual/
+assets/Logo/*.pdf
+assets/Logo/*.ai
+assets/Logo_Distrito_Oficial.ai
