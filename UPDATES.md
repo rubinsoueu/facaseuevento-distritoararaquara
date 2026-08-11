@@ -1,5 +1,10 @@
 # Updates & Registro de Desenvolvimento - Distrito Araraquara
 
+## [2026-08-11] - Tags de Rastreamento de Tráfego Pago (Google Tag Manager GTM-MT96ZDVS)
+- **Instalação do GTM no `<head>`**: Inserido o script principal do Google Tag Manager (`GTM-MT96ZDVS`) no topo da seção `<head>` do `index.html`.
+- **Fallback `<noscript>` no `<body>`**: Inserido o iframe de suporte `<noscript>` imediatamente após a abertura do `<body>`.
+- **Evento de Conversão no `dataLayer`**: Configurado o disparo automático do evento `generate_lead` na camada de dados (`window.dataLayer.push()`) na submissão do formulário B2B para fácil integração com o Google Ads, Meta Ads (Facebook/Instagram), TikTok Ads e LinkedIn Ads.
+
 ## [2026-08-11] - Correção do Carregamento do Logo Mobile em Produção (Vercel)
 - **Causa Raiz**: O diretório `assets/Logo/` estava configurado no `.vercelignore` para ignorar arquivos de design pesados (`.ai` e `.pdf`). Como o logo do header mobile apontava para `assets/Logo/Png/1.png`, a Vercel ignorava a pasta inteira e o navegador exibia o ícone de imagem quebrada com texto alt no celular.
 - **Solução Definitiva**: Copiada a imagem do logo mobile para o diretório de publicação oficial em `assets/Logos/Logo_Mobile_Branco.png` e atualizada a tag `<source srcset="...">` no `index.html`. O logo mobile agora é publicado corretamente em produção sem conflitos com regras do `.vercelignore`.

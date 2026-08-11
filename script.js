@@ -98,6 +98,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       lastSubmittedData = formData;
 
+      // Disparo de Evento de Conversão no dataLayer para GTM / Tráfego Pago
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'generate_lead',
+        lead_tipo: formData.tipoEvento,
+        lead_publico: formData.publicoEstimado,
+        ativo: APP_CONFIG.ATIVO_NOME
+      });
+
       // Integrador preparado para Salesforce / Backend Proxy Seguro
       sendToSalesforce(formData);
 
