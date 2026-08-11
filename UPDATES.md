@@ -1,7 +1,17 @@
 # Updates & Registro de Desenvolvimento - Distrito Araraquara
 
+## [2026-08-11] - Correção do Carregamento do Logo Mobile em Produção (Vercel)
+- **Causa Raiz**: O diretório `assets/Logo/` estava configurado no `.vercelignore` para ignorar arquivos de design pesados (`.ai` e `.pdf`). Como o logo do header mobile apontava para `assets/Logo/Png/1.png`, a Vercel ignorava a pasta inteira e o navegador exibia o ícone de imagem quebrada com texto alt no celular.
+- **Solução Definitiva**: Copiada a imagem do logo mobile para o diretório de publicação oficial em `assets/Logos/Logo_Mobile_Branco.png` e atualizada a tag `<source srcset="...">` no `index.html`. O logo mobile agora é publicado corretamente em produção sem conflitos com regras do `.vercelignore`.
+
+## [2026-08-10] - Repositório GitHub & Implantação de Produção na Vercel
+- **Repositório GitHub**: Criado e sincronizado o repositório público [`rubinsoueu/facaseuevento-distritoararaquara`](https://github.com/rubinsoueu/facaseuevento-distritoararaquara).
+- **Publicação na Vercel**: Implantação de produção realizada com sucesso no endereço oficial:
+  👉 **[https://facaseuevento-distritoararaquara.vercel.app](https://facaseuevento-distritoararaquara.vercel.app)**
+- **Otimização de Arquivos**: Adicionados arquivos `.gitignore` e `.vercelignore` excluindo arquivos pesados de edição (`.ai` e imagens brutas não utilizadas) para manter o deploy leve, ultrarrápido e otimizado.
+
 ## [2026-08-10] - Implementação de Segurança & Endurecimento do Código (Security Hardening)
-- **Proteção Anti-Bot (Honeypot)**: Inserido campo invisível de verificação (`#b2b_website_hp`) no formulário B2B para identificar e descarta envios automatizados por robôs de spam.
+- **Proteção Anti-Bot (Honeypot)**: Inserido campo invisível de verificação (`#b2b_website_hp`) no formulário B2B para identificar e descartar envios automatizados por robôs de spam.
 - **Congelamento de Configurações (`Object.freeze`)**: Objeto `APP_CONFIG` imutável no `script.js` impedindo substituição em memória do número do WhatsApp (`5516997195489`) por extensões de terceiros.
 - **Limites de Caracteres (`maxlength`)**: Atributos de segurança adicionados em todos os campos (`nome: 100`, `empresa: 100`, `email: 120`, `whatsapp: 20`, `data_prevista: 50`, `descricao_evento: 500`) evitando estouros de buffer.
 - **Proteção Contra Cliques Duplos (Debounce)**: Botão de submissão temporariamente desabilitado por 3 segundos após o envio para evitar disparos duplicados acidentais.

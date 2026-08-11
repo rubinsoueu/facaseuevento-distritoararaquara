@@ -1,0 +1,7 @@
+# Vercel deployment ignore rules
+assets/Imagens_Extraidas/
+assets/Distrito_Identidade_Visual_Oficial.pdf
+assets/Identidade Visual/
+assets/Logo/
+*.ai
+*.HEIC
