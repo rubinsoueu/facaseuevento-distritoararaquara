@@ -1,5 +1,16 @@
 # Updates & Registro de Desenvolvimento - Distrito Araraquara
 
+## [2026-08-17] - Atualização da Apresentação Comercial (Jul/26) & Separação dos 5 Equipamentos no Hero
+- **Backup Completo Realizado**: Gerado arquivo de backup completo `backup_distrito_araraquara_20260817_180110.zip` antes da aplicação das alterações.
+- **Separação Pavilhão de Exposições vs Centro de Convenções**: Desmembrado o item no card de destaque do Hero para listar individualmente os 5 equipamentos distintos do complexo:
+  1. *Arena Fonte Luminosa*: 20.205 lugares em estádio
+  2. *Gigantão*: Ginásio coberto para 5.000 pessoas
+  3. *Pavilhão de Exposições*: ~12.000 m² cobertos para feiras
+  4. *Centro de Convenções*: Auditório para 950 lugares
+  5. *Esplanada de Eventos*: +26.000 m² ao ar livre
+- **Nova Apresentação Comercial (Julho/2026)**: Atualizado o link de download do Mídia Kit para o novo arquivo oficial fornecido pela cliente: `assets/Comercial Distrito Araraquara Jul 26.pdf` (24 páginas, 9 MB).
+- **Alinhamento dos Textos**: Galeria de Equipamentos e Ficha Técnica revisadas e alinhadas com as especificações oficiais do novo documento (Pavilhão com 11.884 m² úteis, Centro de Convenções com Auditório de 950 lugares + foyer de 505 m², Esplanada para até 28 mil pessoas).
+
 ## [2026-08-11] - Tags de Rastreamento de Tráfego Pago (Google Tag Manager GTM-MT96ZDVS)
 - **Instalação do GTM no `<head>`**: Inserido o script principal do Google Tag Manager (`GTM-MT96ZDVS`) no topo da seção `<head>` do `index.html`.
 - **Fallback `<noscript>` no `<body>`**: Inserido o iframe de suporte `<noscript>` imediatamente após a abertura do `<body>`.
