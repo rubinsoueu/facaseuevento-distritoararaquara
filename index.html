@@ -468,6 +468,27 @@
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
+  <!-- FORMULÁRIO OCULTO E IFRAME DE INTEGRAÇÃO SALESFORCE MARKETING CLOUD (DEMANAGER STACK 12) -->
+  <iframe name="sfmc_hidden_iframe" id="sfmc_hidden_iframe" style="display:none; width:0; height:0; border:0;" tabindex="-1" aria-hidden="true"></iframe>
+  <form id="sfmc-hidden-form" action="https://cl.s12.exct.net/DEManager.aspx" method="POST" target="sfmc_hidden_iframe" style="display:none;" aria-hidden="true" enctype="application/x-www-form-urlencoded">
+    <input type="hidden" name="_ClientID" value="534016476" />
+    <input type="hidden" name="_deExternalKey" value="Leads_Distrito_Araraquara" />
+    <input type="hidden" name="_action" value="add/update" />
+    <input type="hidden" name="_returnXML" value="0" />
+    <input type="hidden" name="_successURL" value="https://facaseuevento-distritoararaquara.vercel.app" />
+    <input type="hidden" name="_errorURL" value="https://facaseuevento-distritoararaquara.vercel.app" />
+    <input type="hidden" name="EmailAddress" id="sfmc_EmailAddress" />
+    <input type="hidden" name="Nome" id="sfmc_Nome" />
+    <input type="hidden" name="Empresa" id="sfmc_Empresa" />
+    <input type="hidden" name="WhatsApp" id="sfmc_WhatsApp" />
+    <input type="hidden" name="TipoEvento" id="sfmc_TipoEvento" />
+    <input type="hidden" name="PublicoEstimado" id="sfmc_PublicoEstimado" />
+    <input type="hidden" name="DataPrevista" id="sfmc_DataPrevista" />
+    <input type="hidden" name="DescricaoEvento" id="sfmc_DescricaoEvento" />
+    <input type="hidden" name="Ativo" id="sfmc_Ativo" />
+    <input type="hidden" name="DataCriacao" id="sfmc_DataCriacao" />
+  </form>
+
   <script src="script.js"></script>
 </body>
 </html>

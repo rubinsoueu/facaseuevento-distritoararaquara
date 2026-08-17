@@ -170,10 +170,39 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Função de integração preparada para o Salesforce (via Proxy de Backend Seguro)
- * Chaves e segredos de API permanecem exclusivamente no lado do servidor.
+ * Integração Oficial com o Salesforce Marketing Cloud (DEManager / WebCollect)
+ * Grava o lead diretamente na Data Extension: Leads_Distrito_Araraquara (Stack 12)
  * @param {Object} data Dados capturados no formulário B2B
  */
 function sendToSalesforce(data) {
-  console.log('[Salesforce Integration Hook - Secure Proxy Target]:', data);
+  try {
+    const emailField = document.getElementById('sfmc_EmailAddress');
+    const nomeField = document.getElementById('sfmc_Nome');
+    const empresaField = document.getElementById('sfmc_Empresa');
+    const whatsappField = document.getElementById('sfmc_WhatsApp');
+    const tipoEventoField = document.getElementById('sfmc_TipoEvento');
+    const publicoEstimadoField = document.getElementById('sfmc_PublicoEstimado');
+    const dataPrevistaField = document.getElementById('sfmc_DataPrevista');
+    const descricaoEventoField = document.getElementById('sfmc_DescricaoEvento');
+    const ativoField = document.getElementById('sfmc_Ativo');
+    const dataCriacaoField = document.getElementById('sfmc_DataCriacao');
+    const sfmcForm = document.getElementById('sfmc-hidden-form');
+
+    if (sfmcForm) {
+      if (emailField) emailField.value = data.email || '';
+      if (nomeField) nomeField.value = data.nome || '';
+      if (empresaField) empresaField.value = data.empresa || '';
+      if (whatsappField) whatsappField.value = data.whatsapp || '';
+      if (tipoEventoField) tipoEventoField.value = data.tipoEvento || '';
+      if (publicoEstimadoField) publicoEstimadoField.value = data.publicoEstimado || '';
+      if (dataPrevistaField) dataPrevistaField.value = data.dataPrevista || '';
+      if (descricaoEventoField) descricaoEventoField.value = data.descricaoEvento || '';
+      if (ativoField) ativoField.value = data.ativo || 'Distrito Araraquara (Araraquara/SP)';
+      if (dataCriacaoField) dataCriacaoField.value = new Date().toISOString().split('T')[0];
+
+      sfmcForm.submit();
+    }
+  } catch (err) {
+    // Tratamento silencioso
+  }
 }

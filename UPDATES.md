@@ -1,5 +1,21 @@
 # Updates & Registro de Desenvolvimento - Distrito Araraquara
 
+## [2026-08-17] - Integração Oficial com o Salesforce Marketing Cloud (Data Extension Leads_Distrito_Araraquara)
+- **Integração SFMC (Stack 12 - DEManager)**: Implementado formulário oculto e iframe de envio assíncrono para o endpoint oficial `https://cl.s12.exct.net/DEManager.aspx`.
+- **Data Extension Conectada**: `Leads_Distrito_Araraquara` (ClientID `534016476`).
+- **10 Campos Mapeados & Gravados Automaticamente**:
+  1. `EmailAddress` (E-mail corporativo / Chave primária)
+  2. `Nome` (Nome do responsável)
+  3. `Empresa` (Nome da produtora/empresa)
+  4. `WhatsApp` (Telefone/WhatsApp comercial)
+  5. `TipoEvento` (Segmento do evento selecionado)
+  6. `PublicoEstimado` (Estimativa de público)
+  7. `DataPrevista` (Data ou período informado)
+  8. `DescricaoEvento` (Resumo/detalhes opcionais do evento)
+  9. `Ativo` ('Distrito Araraquara (Araraquara/SP)')
+  10. `DataCriacao` (Data de captura no formato ISO/YYYY-MM-DD)
+- **Experiência Fluida**: Envio transparente em segundo plano via `target="sfmc_hidden_iframe"` sem redirecionamentos ou recarregamento de página, acionando simultaneamente o modal de confirmação, o WhatsApp comercial e a camada de eventos `dataLayer` para o GTM.
+
 ## [2026-08-17] - Aplicação Estratégica das Métricas da Esplanada (14.166 m² e +26.000 m²)
 - **Esplanada no Hero**: Destacada a capacidade máxima total: `Esplanada de Eventos: +26.000 m² ao ar livre (até 28 mil pessoas)`.
 - **Esplanada na Galeria**: Contextualizado com precisão técnica: *"Pátio principal com **14.166 m²** de piso contínuo para palcos e montagens, expansível para **+26.000 m²** de área total ao ar livre com a Passarela do Samba, comportando até **28.000 pessoas**."*
