@@ -1,5 +1,10 @@
 # Updates & Registro de Desenvolvimento - Distrito Araraquara
 
+## [2026-08-17] - Aplicação Estratégica das Métricas da Esplanada (14.166 m² e +26.000 m²)
+- **Esplanada no Hero**: Destacada a capacidade máxima total: `Esplanada de Eventos: +26.000 m² ao ar livre (até 28 mil pessoas)`.
+- **Esplanada na Galeria**: Contextualizado com precisão técnica: *"Pátio principal com **14.166 m²** de piso contínuo para palcos e montagens, expansível para **+26.000 m²** de área total ao ar livre com a Passarela do Samba, comportando até **28.000 pessoas**."*
+- **Esplanada na Ficha Técnica**: Métrica discriminada: `14.166 m² úteis (até 26.000 m² / 28 mil pessoas)`.
+
 ## [2026-08-17] - Atualização da Apresentação Comercial (Jul/26) & Separação dos 5 Equipamentos no Hero
 - **Backup Completo Realizado**: Gerado arquivo de backup completo `backup_distrito_araraquara_20260817_180110.zip` antes da aplicação das alterações.
 - **Separação Pavilhão de Exposições vs Centro de Convenções**: Desmembrado o item no card de destaque do Hero para listar individualmente os 5 equipamentos distintos do complexo:
