@@ -1,5 +1,8 @@
 # Updates & Registro de Desenvolvimento - Distrito Araraquara
 
+## [2026-08-17] - Remoção de Emojis do Seletor "Tipo de Evento" no Formulário B2B
+- **Visual Corporativo Limpo**: Removidos todos os ícones/emojis das opções do campo `<select id="tipo_evento">`, padronizando o formulário com texto limpo e profissional.
+
 ## [2026-08-17] - Integração Oficial com o Salesforce Marketing Cloud (Data Extension Leads_Distrito_Araraquara)
 - **Integração SFMC (Stack 12 - DEManager)**: Implementado formulário oculto e iframe de envio assíncrono para o endpoint oficial `https://cl.s12.exct.net/DEManager.aspx`.
 - **Data Extension Conectada**: `Leads_Distrito_Araraquara` (ClientID `534016476`).
