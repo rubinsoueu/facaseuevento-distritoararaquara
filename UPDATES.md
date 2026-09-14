@@ -1,5 +1,11 @@
 # Updates & Registro de Desenvolvimento - Distrito Araraquara
 
+## [2026-09-14] - Otimização Responsiva Mobile & Tablet (Solução 01 + Opção B)
+- **Header Mobile & Tablet**: Ocultado o botão secundário "Mídia Kit" no cabeçalho em telas `<= 992px`. Padronizado o botão principal "Fazer Meu Evento" em uma única linha sólida, com padding e tipografia calibrados, eliminando quebras de linha e sobreposição com o logo.
+- **Mídia Kit na Hero (Opção B)**: Ações do Hero organizadas verticalmente no mobile, com botão secundário de alta legibilidade, ícone de download e rolagem suave para a seção de ficha técnica e download do PDF comercial oficial.
+- **Prevenção de Corte no Safari iOS**: Espaçamentos verticais e margens da Hero calibrados para garantir que ambos os botões fiquem acima da dobra e livres da barra de navegação inferior do iPhone/Safari.
+- **Desktop 100% Intacto**: Todas as regras aplicadas estritamente em `@media` queries mobile/tablet.
+
 ## [2026-08-17] - Remoção de Emojis do Seletor "Tipo de Evento" no Formulário B2B
 - **Visual Corporativo Limpo**: Removidos todos os ícones/emojis das opções do campo `<select id="tipo_evento">`, padronizando o formulário com texto limpo e profissional.
 
