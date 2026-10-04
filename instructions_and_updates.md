@@ -30,3 +30,5 @@ Histórico completo preservado em mirror/bundle e arquivos em ZIP privado no pro
 ## Publicação pendente
 
 Não mergear/deployar esta branch antes de configurar receptor, limites, política e confirmar um lead controlado no Salesforce. No Preview, inspecionar GTM/Ads para evitar duplicação entre conversão web e CRM. Nenhum secret/serviço/deployment foi criado nesta etapa.
+
+PR de rascunho: https://github.com/rubinsoueu/facaseuevento-distritoararaquara/pull/2 . Não mergeado.
