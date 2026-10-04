@@ -15,3 +15,9 @@ assets/Identidade Visual/
 assets/Logo/*.pdf
 assets/Logo/*.ai
 assets/Logo_Distrito_Oficial.ai
+
+# Credentials and local development
+.env
+.env.*
+!.env.example
+.private/

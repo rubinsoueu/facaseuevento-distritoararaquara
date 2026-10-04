@@ -6,3 +6,9 @@ assets/Logo/
 *.ai
 *.HEIC
 *.zip
+
+# Credentials and local development
+.env
+.env.*
+!.env.example
+.private/

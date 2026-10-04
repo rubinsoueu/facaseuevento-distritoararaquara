@@ -172,7 +172,7 @@
       <div class="gallery-grid">
         <div class="gallery-card">
           <div class="gallery-img-wrapper">
-            <img src="assets/Imagens/Arena_Fonte_Luminosa.jpg" alt="Arena Fonte Luminosa - Distrito Araraquara" loading="lazy" />
+            <img src="assets/Imagens/Arena_Fonte_Luminosa.webp" alt="Arena Fonte Luminosa - Distrito Araraquara" loading="lazy" />
             <div class="gallery-badge">Arena</div>
           </div>
           <div class="gallery-card-body">
@@ -183,7 +183,7 @@
 
         <div class="gallery-card">
           <div class="gallery-img-wrapper">
-            <img src="assets/Imagens/Gigantao_Ginasio.jpg" alt="Ginásio Gigantão - Distrito Araraquara" loading="lazy" />
+            <img src="assets/Imagens/Gigantao_Ginasio.webp" alt="Ginásio Gigantão - Distrito Araraquara" loading="lazy" />
             <div class="gallery-badge">Ginásio</div>
           </div>
           <div class="gallery-card-body">
@@ -194,7 +194,7 @@
 
         <div class="gallery-card">
           <div class="gallery-img-wrapper">
-            <img src="assets/Imagens/Pavilhao_Feiras.jpg" alt="Pavilhão de Exposições - Distrito Araraquara" loading="lazy" />
+            <img src="assets/Imagens/Pavilhao_Feiras.webp" alt="Pavilhão de Exposições - Distrito Araraquara" loading="lazy" />
             <div class="gallery-badge">Exposições</div>
           </div>
           <div class="gallery-card-body">
@@ -205,7 +205,7 @@
 
         <div class="gallery-card">
           <div class="gallery-img-wrapper">
-            <img src="assets/Imagens/Externo_centro_convencoes.jpg" alt="Centro de Convenções - Distrito Araraquara" loading="lazy" />
+            <img src="assets/Imagens/Externo_centro_convencoes.webp" alt="Centro de Convenções - Distrito Araraquara" loading="lazy" />
             <div class="gallery-badge">Convenções</div>
           </div>
           <div class="gallery-card-body">
@@ -216,7 +216,7 @@
 
         <div class="gallery-card gallery-card-esplanada">
           <div class="gallery-img-wrapper">
-            <img src="assets/Imagens/Esplanada_outdoor_02.png" alt="Esplanada de Eventos - Distrito Araraquara" loading="lazy" />
+            <img src="assets/Imagens/Esplanada_outdoor_02.webp" alt="Esplanada de Eventos - Distrito Araraquara" loading="lazy" />
             <div class="gallery-badge">Outdoor</div>
           </div>
           <div class="gallery-card-body">
@@ -318,41 +318,51 @@
         <form id="b2b-form">
           <!-- Honeypot anti-bot (campo invisível) -->
           <div style="position: absolute; left: -9999px; top: -9999px;" aria-hidden="true">
-            <input type="text" id="b2b_website_hp" name="b2b_website_hp" tabIndex="-1" autocomplete="off" />
+            <input type="text" id="b2b_website_hp" aria-hidden="true" name="b2b_website_hp" tabIndex="-1" autocomplete="off" />
           </div>
 
           <div class="form-grid">
+            <div class="form-group full-width">
+              <label for="local_interesse">Onde você gostaria de realizar seu evento? *</label>
+              <select id="local_interesse" class="form-control" required>
+                <option value="" selected disabled>Escolha um espaço ou peça orientação</option>
+                <option value="arena">Arena Fonte Luminosa</option><option value="gigantao">Gigantão</option>
+                <option value="pavilhao">Pavilhão de Exposições</option><option value="convencoes">Centro de Convenções</option>
+                <option value="esplanada">Esplanada de Eventos</option><option value="orientacao">Preciso de orientação</option>
+              </select>
+            </div>
+
             <div class="form-group">
               <label for="nome">Nome do Responsável *</label>
-              <input type="text" id="nome" class="form-control" placeholder="Seu nome completo" maxlength="100" required />
+              <input type="text" id="nome" autocomplete="name" class="form-control" placeholder="Seu nome completo" maxlength="100" required />
             </div>
 
             <div class="form-group">
               <label for="empresa">Nome da Empresa / Produtora *</label>
-              <input type="text" id="empresa" class="form-control" placeholder="Nome da produtora ou empresa" maxlength="100" required />
+              <input type="text" id="empresa" autocomplete="organization" class="form-control" placeholder="Nome da produtora ou empresa" maxlength="100" required />
             </div>
 
             <div class="form-group">
               <label for="email">E-mail Corporativo *</label>
-              <input type="email" id="email" class="form-control" placeholder="seuemail@empresa.com.br" maxlength="120" required />
+              <input type="email" id="email" autocomplete="email" class="form-control" placeholder="seuemail@empresa.com.br" maxlength="120" required />
             </div>
 
             <div class="form-group">
               <label for="whatsapp">WhatsApp Comercial *</label>
-              <input type="tel" id="whatsapp" class="form-control" placeholder="(16) 99719-5489" maxlength="20" required />
+              <input type="tel" id="whatsapp" autocomplete="tel" class="form-control" placeholder="(16) 99719-5489" maxlength="20" required />
             </div>
 
             <div class="form-group">
               <label for="tipo_evento">Tipo de Evento *</label>
               <select id="tipo_evento" class="form-control" required>
                 <option value="" disabled selected>Selecione o segmento</option>
-                <option value="Feira de Agronegócio / Exposição Agropecuária / TecnoCampo">Feira de Agronegócio / Exposição Agropecuária / TecnoCampo</option>
-                <option value="Show Sertanejo / Festival / Festa Universitária / Formatura">Show Sertanejo / Festival / Festa Universitária / Formatura</option>
-                <option value="Convenção Corporativa / Encontro de Vendas / Evento de RH">Convenção Corporativa / Encontro de Vendas / Evento de RH</option>
-                <option value="Simpósio Médico / Congresso Jurídico / Evento Acadêmico">Simpósio Médico / Congresso Jurídico / Evento Acadêmico</option>
-                <option value="Ativação Outdoor / Circo / Parque / Evento Itinerante na Esplanada">Ativação Outdoor / Circo / Parque / Evento Itinerante na Esplanada</option>
-                <option value="Evento Esportivo / Cultural no Gigantão ou Arena">Evento Esportivo / Cultural no Gigantão ou Arena</option>
-                <option value="Outro Formato de Evento">Outro Formato de Evento</option>
+                <option value="Feira / exposição">Feira / exposição</option>
+                <option value="Show / festival / festa / formatura">Show / festival / festa / formatura</option>
+                <option value="Convenção / evento corporativo">Convenção / evento corporativo</option>
+                <option value="Congresso / evento acadêmico">Congresso / evento acadêmico</option>
+                <option value="Ativação / evento itinerante">Ativação / evento itinerante</option>
+                <option value="Esportivo / cultural">Esportivo / cultural</option>
+                <option value="Outro formato">Outro formato</option>
               </select>
             </div>
 
@@ -363,7 +373,7 @@
                 <option value="Até 1.000 pessoas">Até 1.000 pessoas</option>
                 <option value="1.000 a 5.000 pessoas">1.000 a 5.000 pessoas</option>
                 <option value="5.000 a 15.000 pessoas">5.000 a 15.000 pessoas</option>
-                <option value="Acima de 15.000 pessoas">Acima de 15.000 pessoas (Arena Fonte Luminosa)</option>
+                <option value="Acima de 15.000 pessoas">Acima de 15.000 pessoas</option>
               </select>
             </div>
 
@@ -371,7 +381,7 @@
               <label for="data_prevista">Data Prevista ou Período *</label>
               <div class="date-input-wrapper">
                 <input type="text" id="data_prevista" class="form-control" placeholder="Ex: Outubro/2026 ou selecione no calendário" maxlength="50" required />
-                <input type="date" id="date_picker_helper" class="date-picker-hidden" tabIndex="-1" />
+                <input type="date" id="date_picker_helper" aria-hidden="true" class="date-picker-hidden" tabIndex="-1" />
                 <button type="button" class="date-picker-trigger-btn" id="calendar-trigger" title="Abrir Calendário">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 </button>
@@ -383,6 +393,7 @@
               <textarea id="descricao_evento" class="form-control" rows="3" placeholder="Conte brevemente sobre o formato, necessidades técnicas ou atrações do evento..." maxlength="500"></textarea>
             </div>
 
+            <p id="privacy-notice" class="form-group full-width">Seus dados serão usados pela equipe comercial para responder à sua consulta. O envio não confirma uma reserva. Consulte a equipe comercial para informações sobre o tratamento dos seus dados.</p><p id="form-status" class="form-group full-width" role="status" aria-live="polite"></p><a class="form-group full-width" href="https://wa.me/5516997195489" target="_blank" rel="noopener noreferrer">Prefiro falar pelo WhatsApp comercial</a>
             <button type="submit" class="btn btn-primary form-submit-btn">
               Solicitar Orçamento Comercial
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -394,13 +405,13 @@
   </section>
 
   <!-- MODAL DE CONFIRMAÇÃO DE ENVIO -->
-  <div class="modal-overlay" id="success-modal">
+  <dialog class="modal-overlay" id="success-modal" aria-labelledby="success-title">
     <div class="modal-content">
       <div class="modal-icon">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
-      <h3>Solicitação Enviada!</h3>
-      <p>Obrigado pelo contato! Nossa equipe comercial em Araraquara/SP retornará em breve com a apresentação e valores de locação.</p>
+      <h3 id="success-title">Consulta recebida!</h3><p id="lead-protocol"></p>
+      <p>Obrigado pelo contato! A equipe comercial avaliará sua consulta. Disponibilidade, estrutura e condições serão confirmadas no atendimento.</p>
       <div style="display: flex; flex-direction: column; gap: 0.75rem;">
         <button type="button" class="btn btn-primary" id="whatsapp-test-btn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
@@ -409,7 +420,7 @@
         <button type="button" class="btn btn-outline" id="close-modal-btn">Fechar Janela</button>
       </div>
     </div>
-  </div>
+  </dialog>
 
   <!-- SEÇÃO 5: RODAPÉ DE CONTATOS -->
   <footer class="footer">
@@ -468,27 +479,6 @@
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <!-- FORMULÁRIO OCULTO E IFRAME DE INTEGRAÇÃO SALESFORCE MARKETING CLOUD (DEMANAGER STACK 12) -->
-  <iframe name="sfmc_hidden_iframe" id="sfmc_hidden_iframe" style="display:none; width:0; height:0; border:0;" tabindex="-1" aria-hidden="true"></iframe>
-  <form id="sfmc-hidden-form" action="https://cl.s12.exct.net/DEManager.aspx" method="POST" target="sfmc_hidden_iframe" style="display:none;" aria-hidden="true" enctype="application/x-www-form-urlencoded">
-    <input type="hidden" name="_ClientID" value="534016476" />
-    <input type="hidden" name="_deExternalKey" value="Leads_Distrito_Araraquara" />
-    <input type="hidden" name="_action" value="add/update" />
-    <input type="hidden" name="_returnXML" value="0" />
-    <input type="hidden" name="_successURL" value="https://facaseuevento-distritoararaquara.vercel.app" />
-    <input type="hidden" name="_errorURL" value="https://facaseuevento-distritoararaquara.vercel.app" />
-    <input type="hidden" name="EmailAddress" id="sfmc_EmailAddress" />
-    <input type="hidden" name="Nome" id="sfmc_Nome" />
-    <input type="hidden" name="Empresa" id="sfmc_Empresa" />
-    <input type="hidden" name="WhatsApp" id="sfmc_WhatsApp" />
-    <input type="hidden" name="TipoEvento" id="sfmc_TipoEvento" />
-    <input type="hidden" name="PublicoEstimado" id="sfmc_PublicoEstimado" />
-    <input type="hidden" name="DataPrevista" id="sfmc_DataPrevista" />
-    <input type="hidden" name="DescricaoEvento" id="sfmc_DescricaoEvento" />
-    <input type="hidden" name="Ativo" id="sfmc_Ativo" />
-    <input type="hidden" name="DataCriacao" id="sfmc_DataCriacao" />
-  </form>
-
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
