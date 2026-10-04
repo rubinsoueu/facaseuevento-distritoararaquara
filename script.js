@@ -1,10 +1,12 @@
+import { COMMERCIAL_CONFIG } from './commercial-config.js';
+import { normalizeLead, campaignAttribution, submitLead, VENUES } from './shared/leads.js';
 /**
  * Landing Page B2B - Distrito Araraquara
  * Script de Tratamento de Leads, Controle de Interface & WhatsApp Comercial
  * (Com Endurecimento de Segurança e Proteção Anti-Bot)
  */
 
-// Configurações globais imutáveis protegidas contra substituição em memória
+// Public contact settings; server-side validation protects lead delivery.
 const APP_CONFIG = Object.freeze({
   WHATSAPP_PHONE: '5516997195489',
   ATIVO_NOME: 'Distrito Araraquara (Araraquara/SP)',
@@ -13,11 +15,20 @@ const APP_CONFIG = Object.freeze({
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('b2b-form');
+  try {
+    const policy = new URL(COMMERCIAL_CONFIG.privacyPolicyUrl);
+    if (policy.protocol === 'https:' && !policy.username && !policy.password) {
+      const link = document.createElement('a'); link.href = policy.href; link.textContent = 'Política de privacidade'; link.target = '_blank'; link.rel = 'noopener noreferrer';
+      document.getElementById('privacy-notice').append(' ', link);
+    }
+  } catch { /* A verified policy URL must be configured before release. */ }
+
   const modal = document.getElementById('success-modal');
   const closeModalBtn = document.getElementById('close-modal-btn');
   const whatsappTestBtn = document.getElementById('whatsapp-test-btn');
   const phoneInput = document.getElementById('whatsapp');
   const backToTopBtn = document.getElementById('back-to-top');
+  modal?.addEventListener('close', () => form?.querySelector('.form-submit-btn')?.focus());
 
   // 1. Máscara de Telefone WhatsApp comercial (XX) XXXXX-XXXX
   if (phoneInput) {
@@ -61,68 +72,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let lastSubmittedData = null;
 
-  // 3. Submissão do Formulário B2B com Validação & Anti-Bot
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      // Checagem Anti-Bot Honeypot (campo invisível)
-      const hpField = document.getElementById('b2b_website_hp');
-      if (hpField && hpField.value.trim() !== '') {
-        console.warn('[Segurança] Submissão automatizada bloqueada via Honeypot.');
-        return;
-      }
-
-      // Prevenção de envios duplos acidentais (Debounce)
-      const submitBtn = form.querySelector('.form-submit-btn');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        setTimeout(() => {
-          submitBtn.disabled = false;
-        }, APP_CONFIG.SUBMIT_DEBOUNCE_MS);
-      }
-
-      const descInput = document.getElementById('descricao_evento');
-      const formData = {
-        ativo: APP_CONFIG.ATIVO_NOME,
-        nome: document.getElementById('nome').value.trim(),
-        empresa: document.getElementById('empresa').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        whatsapp: document.getElementById('whatsapp').value.trim(),
-        tipoEvento: document.getElementById('tipo_evento').value,
-        dataPrevista: document.getElementById('data_prevista').value,
-        publicoEstimado: document.getElementById('publico_estimado').value,
-        descricaoEvento: descInput ? descInput.value.trim() : '',
-        timestamp: new Date().toISOString()
-      };
-
-      lastSubmittedData = formData;
-
-      // Disparo de Evento de Conversão no dataLayer para GTM / Tráfego Pago
+  let submitting = false, requestId = crypto.randomUUID(), lastFingerprint = '';
+  if (form) form.addEventListener('submit', async event => {
+    event.preventDefault(); if (submitting || !form.reportValidity()) return;
+    const submitBtn = form.querySelector('.form-submit-btn'), status = document.getElementById('form-status');
+    const value = id => document.getElementById(id)?.value || '';
+    const input = { nome: value('nome'), empresa: value('empresa'), email: value('email'), whatsapp: value('whatsapp'), tipoEvento: value('tipo_evento'), publicoEstimado: value('publico_estimado'), dataPrevista: value('data_prevista'), descricaoEvento: value('descricao_evento'), localInteresse: value('local_interesse'), website: value('b2b_website_hp'), attribution: campaignAttribution(location.search) };
+    const fingerprint = JSON.stringify(input);
+    if (lastFingerprint && lastFingerprint !== fingerprint) requestId = crypto.randomUUID(); lastFingerprint = fingerprint;
+    submitting = true; submitBtn.disabled = true; status.textContent = 'Enviando sua consulta…';
+    try {
+      const data = normalizeLead({ ...input, requestId }, 'distrito');
+      const receipt = await submitLead(data);
+      lastSubmittedData = data;
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'generate_lead',
-        lead_tipo: formData.tipoEvento,
-        lead_publico: formData.publicoEstimado,
-        ativo: APP_CONFIG.ATIVO_NOME
-      });
-
-      // Integrador preparado para Salesforce / Backend Proxy Seguro
-      sendToSalesforce(formData);
-
-      // Abre Modal de Confirmação
-      if (modal) {
-        modal.classList.add('active');
-      }
-
-      form.reset();
-    });
-  }
+      window.dataLayer.push({ event: 'generate_lead', lead_id: receipt.leadId, lead_tipo: data.tipoEvento, lead_publico: data.publicoEstimado, local_interesse: data.localInteresse, origem: data.paginaOrigem, ativo: data.ativo });
+      document.getElementById('lead-protocol').textContent = `Protocolo: ${receipt.leadId}`;
+      modal.showModal(); closeModalBtn.focus();
+      status.textContent = 'Consulta recebida.'; form.reset(); requestId = crypto.randomUUID(); lastFingerprint = '';
+    } catch (error) { status.textContent = error.message || 'O recebimento não foi confirmado. Seus dados continuam no formulário.'; }
+    finally { submitting = false; submitBtn.disabled = false; }
+  });
 
   // 4. Fechar Modal
   if (closeModalBtn) {
     closeModalBtn.addEventListener('click', () => {
-      if (modal) modal.classList.remove('active');
+      if (modal) modal.close();
     });
   }
 
@@ -133,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const phone = APP_CONFIG.WHATSAPP_PHONE;
       let text = `Olá! Gostaria de mais informações comerciais e consultar disponibilidade de datas para realizar um evento no *Distrito Araraquara*.%0A%0A` +
+        `*Local de interesse:* ${encodeURIComponent(VENUES[lastSubmittedData.localInteresse] || 'Distrito Araraquara')}%0A%0A` +
         `*Meus Dados de Contato:*%0A` +
         `• *Nome:* ${encodeURIComponent(lastSubmittedData.nome)}%0A` +
         `• *Empresa / Produtora:* ${encodeURIComponent(lastSubmittedData.empresa)}%0A` +
@@ -168,41 +144,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-
-/**
- * Integração Oficial com o Salesforce Marketing Cloud (DEManager / WebCollect)
- * Grava o lead diretamente na Data Extension: Leads_Distrito_Araraquara (Stack 12)
- * @param {Object} data Dados capturados no formulário B2B
- */
-function sendToSalesforce(data) {
-  try {
-    const emailField = document.getElementById('sfmc_EmailAddress');
-    const nomeField = document.getElementById('sfmc_Nome');
-    const empresaField = document.getElementById('sfmc_Empresa');
-    const whatsappField = document.getElementById('sfmc_WhatsApp');
-    const tipoEventoField = document.getElementById('sfmc_TipoEvento');
-    const publicoEstimadoField = document.getElementById('sfmc_PublicoEstimado');
-    const dataPrevistaField = document.getElementById('sfmc_DataPrevista');
-    const descricaoEventoField = document.getElementById('sfmc_DescricaoEvento');
-    const ativoField = document.getElementById('sfmc_Ativo');
-    const dataCriacaoField = document.getElementById('sfmc_DataCriacao');
-    const sfmcForm = document.getElementById('sfmc-hidden-form');
-
-    if (sfmcForm) {
-      if (emailField) emailField.value = data.email || '';
-      if (nomeField) nomeField.value = data.nome || '';
-      if (empresaField) empresaField.value = data.empresa || '';
-      if (whatsappField) whatsappField.value = data.whatsapp || '';
-      if (tipoEventoField) tipoEventoField.value = data.tipoEvento || '';
-      if (publicoEstimadoField) publicoEstimadoField.value = data.publicoEstimado || '';
-      if (dataPrevistaField) dataPrevistaField.value = data.dataPrevista || '';
-      if (descricaoEventoField) descricaoEventoField.value = data.descricaoEvento || '';
-      if (ativoField) ativoField.value = data.ativo || 'Distrito Araraquara (Araraquara/SP)';
-      if (dataCriacaoField) dataCriacaoField.value = new Date().toISOString().split('T')[0];
-
-      sfmcForm.submit();
-    }
-  } catch (err) {
-    // Tratamento silencioso
-  }
-}

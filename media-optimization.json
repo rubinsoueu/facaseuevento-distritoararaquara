@@ -1,0 +1,38 @@
+[
+  {
+    "original": "assets/Imagens/Arena_Fonte_Luminosa.jpg",
+    "webp": "assets/Imagens/Arena_Fonte_Luminosa.webp",
+    "originalBytes": 134686,
+    "webpBytes": 200220
+  },
+  {
+    "original": "assets/Imagens/Esplanada_outdoor_02.png",
+    "webp": "assets/Imagens/Esplanada_outdoor_02.webp",
+    "originalBytes": 2134330,
+    "webpBytes": 244170
+  },
+  {
+    "original": "assets/Imagens/Externo_centro_convencoes.jpg",
+    "webp": "assets/Imagens/Externo_centro_convencoes.webp",
+    "originalBytes": 4154471,
+    "webpBytes": 503890
+  },
+  {
+    "original": "assets/Imagens/Gigantao_Ginasio.jpg",
+    "webp": "assets/Imagens/Gigantao_Ginasio.webp",
+    "originalBytes": 166921,
+    "webpBytes": 304828
+  },
+  {
+    "original": "assets/Imagens/Hero_Background.jpg",
+    "webp": "assets/Imagens/Hero_Background.webp",
+    "originalBytes": 213335,
+    "webpBytes": 396760
+  },
+  {
+    "original": "assets/Imagens/Pavilhao_Feiras.jpg",
+    "webp": "assets/Imagens/Pavilhao_Feiras.webp",
+    "originalBytes": 129289,
+    "webpBytes": 210466
+  }
+]

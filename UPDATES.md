@@ -1,5 +1,9 @@
 # Updates & Registro de Desenvolvimento - Distrito Araraquara
 
+## [2026-10-04] — Melhoria em branch, produção preservada
+Seletor de local, contrato com Arena, confirmação real do receptor, limites duráveis preparados, privacidade configurável, diálogo acessível e WebP. A integração iframe abaixo é HISTÓRICO; esta branch usa receptor servidor ainda não configurado. Consulte `instructions_and_updates.md` antes de publicar. Testes: 6 aprovados; nenhum envio real ou alteração Salesforce.
+
+
 ## [2026-09-14] - Otimização Responsiva Mobile & Tablet (Solução 01 + Opção B)
 - **Header Mobile & Tablet**: Ocultado o botão secundário "Mídia Kit" no cabeçalho em telas `<= 992px`. Padronizado o botão principal "Fazer Meu Evento" em uma única linha sólida, com padding e tipografia calibrados, eliminando quebras de linha e sobreposição com o logo.
 - **Mídia Kit na Hero (Opção B)**: Ações do Hero organizadas verticalmente no mobile, com botão secundário de alta legibilidade, ícone de download e rolagem suave para a seção de ficha técnica e download do PDF comercial oficial.
